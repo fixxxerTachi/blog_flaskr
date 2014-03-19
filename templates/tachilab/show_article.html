@@ -1,0 +1,29 @@
+{% extends 'tachilab/layout.html' %}
+{% block content %}
+<h2>tachilab</h2>
+<div class='page'>
+	{% for page in articles.iter_pages() %}
+		{% if page %}
+			{% if page != articles.page %}
+				<a href="{{ url_for('show_article',page=page,category=category,keyword=keyword)}}">{{page}}</a>
+			{% else %}
+				<span>{{page}}</span>
+			{% endif %}
+		{% else %}
+			<span>...</span>
+		{% endif %}
+	{% endfor %}
+</div>
+</div>
+{% for a in articles.items %}
+<ul>
+	<li>{{a.id}}</li>
+	<li>{{a.title}}</li>
+	<li>{{a.contents}}</li>
+	<li>{{a.category.name}}
+	<li>{{a.updated_at}}</li>
+	<li>{{a.tag}}</li>
+</ul>
+{% endfor %}
+{% endblock %}
+

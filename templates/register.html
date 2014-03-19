@@ -1,0 +1,15 @@
+<form method='post'>
+	<dl>
+		{{form.username}}
+		{{form.email}}
+		{{form.password}}
+		{{form.confirm}}
+		{{form.accept_tos}}
+	</dl>
+	<p><input type='submit' value='retgister'>
+</form>
+{% if data %}
+{% for n in data %}
+	{{data}}
+{% endfor %}
+{% endif %}

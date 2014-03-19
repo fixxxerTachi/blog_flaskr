@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset='utf-8'><title>出荷処理</title></head><body>
+<h2>受注一覧</h2>
+<div>
+	<ul>
+		<li><a href='/shipment/'>受注一覧</a></li>
+		<li><a href='/shipment/?status=accepted'>受注処理中一覧</a></li>
+		<li><a href='/shipment/?status=prepared'>出荷準備中一覧</a></li>
+	</ul>
+<div>
+<div>
+	<form method='post'>
+	<table cellpadding='0' cellspacint='0'>
+	<tr><th>注文受付日</th><th>注文ID</th><th>製品コード</th><th>出荷状態</th></tr>
+	{% for o in orders %}
+		<tr><td>{{o.created_at}}</td><td>{{o.id}}</td><td>
+			{% for p in o.products %}
+				<p>{{p.product.code}}</p>
+			{% endfor %}
+			</td><td>
+			{% for p in o.products %}
+				<p>{{p.status.status}}</p>
+				<p><select name='shipment-{{o.id}}-{{p.product.id}}'>	
+				{% for s in statuses %}
+					{% if s.id == p.status.id %}
+						<option value={{s.id}} selected>{{s.status}}</option>
+					{% else %}
+						<option value={{s.id}}>{{s.status}}</option>
+					{% endif %}
+				{% endfor %}
+				<select></p>
+			{% endfor %}
+		</td></tr>
+	{% endfor %}
+	</table>
+	<p><input type='submit' value='変更'></p>
+	</form>
+</div>
+</body></html>

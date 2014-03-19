@@ -1,0 +1,13 @@
+{% extends 'tachilab/layout.html' %}
+{% block content %}
+<h2>Add Article</h2>
+<form method='post'>
+<table cellpadding='0' cellspacing='0'>
+<tr><th>{{form.title.label}}</th><td>{{form.title}}</td></tr>
+<tr><th>{{form.contents.label}}</th><td>{{form.contents(cols='80',rows='30')}}</td></tr>
+<tr><th>{{form.category.label}}</th><td>{{form.category}}</td></tr>
+<tr><th>{{form.tag.label}}</th><td>{{form.tag}}</td></tr>
+<tr><th></th><td><input type='submit' value='add'></td></tr>
+</table>
+</form>
+{% endblock %}
