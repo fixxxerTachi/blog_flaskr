@@ -5,7 +5,7 @@ import datetime
 
 app=Flask(__name__)
 cache=Cache(app)
-app.config['SQLALCHEMY_DATABASE_URI']='mysql://tachi:tachi@localhost/puppetz_blog'
+app.config['SQLALCHEMY_DATABASE_URI']='mysql://username:password@localhost/puppetz_blog'
 db=SQLAlchemy(app)
 
 def init_db():
